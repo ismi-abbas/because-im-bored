@@ -12,14 +12,14 @@ const getTaskList = createServerFn({
   const data = JSON.parse(
     await fs.promises.readFile(filePath, "utf-8").catch(() => "[]")
   );
-  return data as { title: string; id: number }[];
+  return data as { name: string; id: number }[];
 });
 
 const addTask = createServerFn({ method: "POST" })
-  .validator((d: { title: string; id: number }) => d)
+  .validator((d: { name: string; id: number }) => d)
   .handler(async ({ data }) => {
-    const tasks = await getTaskList();
-    await fs.promises.writeFile(filePath, JSON.stringify([...tasks, data]));
+    const visitors = await getTaskList();
+    await fs.promises.writeFile(filePath, JSON.stringify([...visitors, data]));
   });
 
 const deleteTask = createServerFn({ method: "POST" })
@@ -42,18 +42,18 @@ export const Route = createFileRoute("/dashboard")({
 function RouteComponent() {
   const router = useRouter();
   const data = Route.useLoaderData();
-  const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
 
   const handleSubmit = async () => {
-    if (!title.trim()) return;
+    if (!name.trim()) return;
     await addTask({
       data: {
         id: Date.now(),
-        title,
+        name: name,
       },
     }).then(() => {
       router.invalidate();
-      setTitle("");
+      setName("");
     });
   };
 
@@ -67,11 +67,12 @@ function RouteComponent() {
 
   const handleDownloadFile = async () => {
     const data = await getTaskList();
-    const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+    const names = data.map((item) => item.name);
+    const blob = new Blob([names.join("\n")], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "tasks.json";
+    link.download = "visitors.txt";
     link.click();
   };
 
@@ -88,7 +89,7 @@ function RouteComponent() {
           <ul className={styles.list}>
             {data?.map((item) => (
               <li key={item.id} className={styles.listItem}>
-                {item.title}
+                {item.name}
                 <span>
                   <button
                     className={styles["button-delete"]}
@@ -112,9 +113,9 @@ function RouteComponent() {
         <form method="post" className={styles.form}>
           <input
             type="text"
-            name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             placeholder="Your name"
             className={styles.input}
           />
