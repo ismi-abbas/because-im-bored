@@ -1,7 +1,7 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/start";
 import * as fs from "node:fs";
-import styles from "./dashboard.module.css";
+import styles from "./index.module.css";
 
 const filePath = "count.txt";
 
@@ -35,18 +35,25 @@ function Home() {
 
   return (
     <div className={styles.container}>
-      <h1>
+      <h1 className={styles.title}>
         This is just a{" "}
-        <span>
-          <a href="https://tanstack.com/router/latest/docs/framework/react/start/overview">
-            Tanstack Start
-          </a>
-        </span>{" "}
+        <a
+          href="https://tanstack.com/router/latest/docs/framework/react/start/overview"
+          target="_blank"
+          className={styles.highlight}
+        >
+          Tanstack Start{" "}
+          <img src="tanstack.png" alt="TanStack Logo" width="32" height="32" />
+        </a>{" "}
         testing app
       </h1>
 
-      <a href="https://github.com/ismi-abbas/because-im-bored" target="_blank">
-        See the code here
+      <a
+        href="https://github.com/ismi-abbas/because-im-bored"
+        target="_blank"
+        className={styles.githubLink}
+      >
+        &gt; See the code here
       </a>
     </div>
   );
