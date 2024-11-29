@@ -2,11 +2,12 @@
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 90%;
 }
 
 .container > * + * {
@@ -16,7 +17,8 @@
 .title {
   font-size: 1.875rem;
   font-weight: 600;
-  color: #111827;
+  color: white;
+  margin-bottom: 1.5rem;
 }
 
 .grid {
@@ -33,25 +35,27 @@
 }
 
 .listItem {
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  cursor: default;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
-  background-color: #f3f4f6;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-  color: #374151;
-  font-size: 0.875rem;
-  transition: transform 0.2s;
-  cursor: default;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .listItem:hover {
   transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .emptyMessage {
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 0.875rem;
 }
 
@@ -64,42 +68,51 @@
 .input {
   padding: 0.75rem 1rem;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.875rem;
   outline: none;
-  transition: border-color 0.2s;
+  transition: all 0.2s;
+  color: white;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .button {
   padding: 0.75rem 1.5rem;
-  background-color: #3b82f6;
+  background: rgba(255, 255, 255, 0.1);
   color: white;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.button-delete {
-  padding: 0.5rem 1rem;
-  font-size: 0.75rem;
-  background-color: #ef4444;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
 }
 
 .button:hover {
-  background-color: #2563eb;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.button-delete {
+  padding: 0.25rem 0.75rem;
+  background: rgba(239, 68, 68, 0.2);
+  color: white;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.button-delete:hover {
+  background: rgba(239, 68, 68, 0.3);
 }
