@@ -7,6 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { Meta, Scripts } from "@tanstack/start";
 import type { ReactNode } from "react";
+import "./index.css";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -33,34 +34,36 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <head>
         <Meta />
       </head>
-      <body
-        style={{
-          margin: "0",
-          padding: "0",
-          fontFamily: "JetBrains Mono",
-        }}
-      >
-        <nav
-          style={{
-            display: "flex",
-            gap: "1rem",
-            justifyContent: "center",
-            border: "1px solid black",
-            padding: ".5rem",
-            fontFamily: "JetBrains Mono",
-          }}
-        >
+      <body>
+        <nav>
           <Link to="/" style={{ textDecoration: "none" }}>
             Home
           </Link>
           <Link to="/dashboard" style={{ textDecoration: "none" }}>
-            Dashboard
-          </Link>
-          <Link to="/user" style={{ textDecoration: "none" }}>
-            User
+            Visitor List
           </Link>
         </nav>
-        <div style={{ padding: "1rem", flex: 1 }}>{children}</div>
+        <div
+          style={{
+            padding: "1rem",
+            flex: 1,
+            display: "flex",
+          }}
+        >
+          {children}
+        </div>
+        <footer
+          style={{
+            padding: "1rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          {new Date().getFullYear()} by {""}
+          <span>
+            <a href="https://github.com/ismi-abbas">ismi-abbas ✌️</a>
+          </span>
+        </footer>
         <ScrollRestoration />
         <Scripts />
       </body>

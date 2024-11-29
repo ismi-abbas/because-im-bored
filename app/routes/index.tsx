@@ -1,6 +1,7 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/start";
 import * as fs from "node:fs";
+import styles from "./dashboard.module.css";
 
 const filePath = "count.txt";
 
@@ -33,10 +34,20 @@ function Home() {
   const state = Route.useLoaderData();
 
   return (
-    <div>
-      <h1>Hello! This is the Tanstack Start testing app</h1>
+    <div className={styles.container}>
+      <h1>
+        This is just a{" "}
+        <span>
+          <a href="https://tanstack.com/router/latest/docs/framework/react/start/overview">
+            Tanstack Start
+          </a>
+        </span>{" "}
+        testing app
+      </h1>
 
-      <a href="">See the code here</a>
+      <a href="https://github.com/ismi-abbas/because-im-bored" target="_blank">
+        See the code here
+      </a>
     </div>
   );
 }

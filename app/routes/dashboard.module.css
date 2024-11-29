@@ -9,11 +9,14 @@
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+.container > * + * {
+  margin-top: 1rem;
+}
+
 .title {
   font-size: 1.875rem;
   font-weight: 600;
   color: #111827;
-  margin-bottom: 1.5rem;
 }
 
 .grid {
@@ -30,6 +33,9 @@
 }
 
 .listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 0.75rem 1rem;
   background-color: #f3f4f6;
   border-radius: 8px;
@@ -72,6 +78,19 @@
 .button {
   padding: 0.75rem 1.5rem;
   background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button-delete {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  background-color: #ef4444;
   color: white;
   border: none;
   border-radius: 8px;
